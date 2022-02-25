@@ -13,5 +13,5 @@ const port = process.env.PORT
 
 //listen call to port
 app.listen(port , () => {
-    console.log(`🌎 Server is running on PORT http://localhost:${port}`)
+    console.log(`🌎 Server is running on http://localhost:${port}`)
 })
