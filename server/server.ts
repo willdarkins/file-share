@@ -9,6 +9,7 @@ dotenv.config()
 //cors middleware to communicate between front,back and db
 app.use(cors());
 
+//port variable
 const port = process.env.PORT
 
 //listen call to port
