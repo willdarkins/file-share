@@ -3,12 +3,14 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 const app = express()
-const PORT = process.env.PORT
+const port = process.env.PORT
 
 dotenv.config()
 
+//cors middleware to communicate between front,back and db
 app.use(cors());
 
-app.listen(PORT , () => {
-    console.log(`🌎 Server is running on PORT ${PORT}`)
+//listen call to port
+app.listen(port , () => {
+    console.log(`🌎 Server is running on PORT ${port}`)
 })
