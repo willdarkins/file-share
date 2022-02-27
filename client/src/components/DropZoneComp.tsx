@@ -1,16 +1,26 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 
 const DropZoneComp = () => {
-
-  const { getRootProps, getInputProps } = useDropzone({})
+  const onDrop = useCallback((acceptedFiles) => {
+    console.log(acceptedFiles)
+  },
+    [],
+  )
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    multiple: false
+  })
 
   return (
-    <div>
-
-      <div {...getRootProps()} className='h-80 w-full' >
+    <div className='p-4'>
+      <div {...getRootProps()} className='h-80 w-full rounded-md cursor-pointer focus:outline-none' >
         <input {...getInputProps()} />
-        <p>Drag and drop your prefered files</p>
+        <div>
+          <img src='/images/folder.png' alt='foler' className='h-16 w-16'  />
+          <p>Drag and drop your prefered files</p>
+        </div>
+        
       </div>
 
     </div>
