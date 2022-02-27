@@ -1,9 +1,10 @@
-import React, { useCallback } from 'react'
+import React, { Dispatch, FC, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 
-const DropZoneComp = () => {
+const DropZoneComp:FC<{setFile:Dispatch<any>}> = ({setFile}) => {
   const onDrop = useCallback((acceptedFiles) => {
     console.log(acceptedFiles)
+    setFile(acceptedFiles[0])
   },
     [],
   )
@@ -26,10 +27,10 @@ const DropZoneComp = () => {
           {
             isDragReject ? (<p>This application only accpets images and audio 😥</p>) :
               (
-                <div>
+                <>
                   <p>Drag and drop your prefered files</p>
                   <p className='mt-2 text-base text-gray-300'>jpeg, png and mp3 files only</p>
-                </div>
+                </>
               )}
         </div>
       </div>
