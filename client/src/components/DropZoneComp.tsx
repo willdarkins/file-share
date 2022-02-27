@@ -15,9 +15,13 @@ const DropZoneComp = () => {
 
   return (
     <div className='p-4 w-full'>
-      <div {...getRootProps()} className='h-80 w-full rounded-md cursor-pointer focus:outline-none' >
+      <div {...getRootProps()} className='h-80 w-full rounded-md cursor-pointer focus:outline-none' > 
         <input {...getInputProps()} />
-        <div className='flex flex-col items-center justify-center border-2 border-dashed border-yellow-light rounded-xl h-full space-y-3'>
+        <div className={
+          'flex flex-col items-center justify-center border-2 border-dashed border-yellow-light rounded-xl h-full space-y-3 '
+          + (isDragReject === true ? 'border-red-600' : '')
+          + (isDragAccept === true ? 'border-green-500' : '')
+          }>
           <img src='/images/folder.png' alt='foler' className='h-16 w-16' />
           {
             isDragReject ? (<p>This application only accpets images and audio 😥</p>) :
