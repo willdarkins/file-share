@@ -7,20 +7,27 @@ const DropZoneComp = () => {
   },
     [],
   )
-  const { getRootProps, getInputProps } = useDropzone({
+  const { getRootProps, getInputProps, isDragAccept, isDragReject } = useDropzone({
     onDrop,
-    multiple: false
+    multiple: false,
+    accept: 'image/jpeg, image/png, audio/mpeg'
   })
 
   return (
-    <div className='p-4'>
+    <div className='p-4 w-full'>
       <div {...getRootProps()} className='h-80 w-full rounded-md cursor-pointer focus:outline-none' >
         <input {...getInputProps()} />
-        <div>
-          <img src='/images/folder.png' alt='foler' className='h-16 w-16'  />
-          <p>Drag and drop your prefered files</p>
+        <div className='flex flex-col items-center justify-center border-2 border-dashed border-yellow-light rounded-xl h-full space-y-3'>
+          <img src='/images/folder.png' alt='foler' className='h-16 w-16' />
+          {
+            isDragReject ? (<p>This application only accpets images and audio 😥</p>) :
+              (
+                <div>
+                  <p>Drag and drop your prefered files</p>
+                  <p className='mt-2 text-base text-gray-300'>jpeg, png and mp3 files only</p>
+                </div>
+              )}
         </div>
-        
       </div>
 
     </div>
