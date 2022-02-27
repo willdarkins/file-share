@@ -18,7 +18,7 @@ const DropZoneComp = () => {
       <div {...getRootProps()} className='h-80 w-full rounded-md cursor-pointer focus:outline-none' > 
         <input {...getInputProps()} />
         <div className={
-          'flex flex-col items-center justify-center border-2 border-dashed border-yellow-light rounded-xl h-full space-y-3 '
+          'flex flex-col items-center justify-center border-2 border-dashed border-yellow-300 rounded-xl h-full space-y-3 '
           + (isDragReject === true ? 'border-red-600' : '')
           + (isDragAccept === true ? 'border-green-500' : '')
           }>
