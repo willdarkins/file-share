@@ -22,10 +22,9 @@ const handleDownload = async() => {
                 <span>
                     File does not exist. Check URL.
                 </span> : <>
-                
                 <img src='/images/file-download.png' alt='download' className='w-16 h-16 '/>
                 <h1 className='text-xl '>Your file is ready for download</h1>
-                <RenderFile file={{format,name,sizeInBytes}} />
+                <div><RenderFile file={{format,name,sizeInBytes}} /></div>
                 <button onClick={handleDownload} className='w-44 bg-gray-900 p-2 my-5 rounded-md focus:outline-none cursor-pointer'>Download</button>
                 </>
         }
