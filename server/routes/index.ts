@@ -80,4 +80,8 @@ router.get('/:id/download',async (req, res) => {
     }
 })
 
+router.post('/email', async (req, res) => {
+    
+})
+
 export default router
