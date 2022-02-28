@@ -17,7 +17,9 @@ export default function Home() {
             sizeInBytes: file.size
           }} />
         )}
-        {/* upload button */}
+        <button className="w-44 bg-gray-900 p-2 my-5 rounded-md focus:outline-none cursor-pointer">
+          Upload
+        </button>
       </div>
     </div>
   );
