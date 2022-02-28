@@ -8,16 +8,16 @@ const index: NextPage<{
     file: IFile
 }> = ({ file: { format, name, sizeInBytes, id } }) => {
     return (
-        <div>
+        <div className='flex flex-col items-center justify-center py-3 space-y-4 bg-gray-800 rounded-md shadow-xl w-96'>
             {!id ?
                 <span>
                     File does not exist. Check URL.
                 </span> : <>
                 
-                <img src='/images/file-download.png' alt='download' />
-                <h1>Your file is ready for download</h1>
+                <img src='/images/file-download.png' alt='download' className='w-16 h-16 '/>
+                <h1 className='text-xl '>Your file is ready for download</h1>
                 <RenderFile file={{format,name,sizeInBytes}} />
-                <button>Download</button>
+                <button className='w-44 bg-gray-900 p-2 my-5 rounded-md focus:outline-none cursor-pointer'>Download</button>
                 </>
         }
         </div>
