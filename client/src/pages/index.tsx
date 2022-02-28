@@ -10,6 +10,9 @@ export default function Home() {
       <div className="w-96 flex flex-col items-center bg-gray-800 shadow-xl rounded-xl justify-center">
         <DropZoneComp setFile={setFile} />
         {/* render file */}
+        {
+          file?.name
+        }
         {/* upload button */}
       </div>
     </div>

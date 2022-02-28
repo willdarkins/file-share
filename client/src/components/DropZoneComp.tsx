@@ -25,7 +25,7 @@ const DropZoneComp:FC<{setFile:Dispatch<any>}> = ({setFile}) => {
           }>
           <img src='/images/folder.png' alt='foler' className='h-16 w-16' />
           {
-            isDragReject ? (<p>This application only accpets images and audio 😥</p>) :
+            isDragReject ? (<p className='mt-2 text-base text-gray-300'>This application only accpets images and audio 😥</p>) :
               (
                 <>
                   <p>Drag and drop your prefered files</p>
