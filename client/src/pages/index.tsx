@@ -3,6 +3,7 @@ import DropZoneComp from "@components/DropZoneComp";
 import RenderFile from "@components/RenderFile";
 import axios from "axios";
 import DownloadFile from "@components/DownloadFile";
+import EmailForm from "@components/EmailForm";
 
 export default function Home() {
   const [file, setFile] = useState(null)
@@ -60,7 +61,7 @@ export default function Home() {
           downloadPageLink && (
             <div className="p-2 text-center">
               <DownloadFile downloadPageLink={downloadPageLink} />
-              {/* Email Form */}
+              <EmailForm id={formId} />
               <button className="w-44 bg-gray-900 p-2 my-5 rounded-md focus:outline-none cursor-pointer"
               onClick={resetComponent}
               >Upload Another File</button>
