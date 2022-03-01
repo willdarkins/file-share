@@ -1,6 +1,5 @@
 const createEmailTemplate = (
     emailFrom:string,
-    emailTo:string,
     downloadPageLink:string,
     fileName:string,
     fileSize:string) => {

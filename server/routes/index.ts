@@ -4,6 +4,7 @@ import nodeMailer from 'nodemailer'
 import { UploadApiResponse, v2 as cloudinary } from 'cloudinary'
 import File from '../models/file.model'
 import https from 'https'
+import createEmailTemplate from '../utils/emailTemplate';
 
 const router = express.Router();
 
@@ -118,9 +119,21 @@ router.post('/email', async (req, res) => {
         to: emailTo, // list of receivers
         subject: "Shared File", // Subject line
         text: `${emailFrom} has sent you a file to upload`, // plain text body
-        html: "<b>Hello world?</b>", // html body
-      });
+        html: createEmailTemplate(emailFrom, downloadPageLink, filename, fileSize), // html body
+      }
 
+    transporter.sendMail(mailObject, async (error, info) => {
+        if(error) {
+            console.log(error)
+            return res.status(500).json({ message: 'Server Error' })
+        }
+        file.sender = emailFrom;
+        file.reciever = emailTo;
+
+        await file.save();
+        return res.status(200).json({message: 'Email sent!' })
+
+      });
     //6. Save the data and send the response
 
 })
