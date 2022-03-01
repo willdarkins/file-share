@@ -6,6 +6,11 @@ id:string
   return (
     <div>
         <h3>Email Your File Directly to Friends!</h3>
+        <form className=''>
+            <input className='' type="text" />
+            <input className='' type="text" />
+            <button className=''></button>
+        </form>
     </div>
   )
 }
