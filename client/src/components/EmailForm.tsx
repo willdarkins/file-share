@@ -8,7 +8,8 @@ const EmailForm: FC<{
     const [emailTo, setEmailTo] = useState('');
     const [message, setMessage] = useState(null);
 
-    const handleEmail = async () => {
+    const handleEmail = async (e) => {
+        e.preventDefault();
         try {
             const { data } = await axios({
                 method: 'POST',
