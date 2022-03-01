@@ -38,7 +38,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     const { id } = context.query
     let file;
     try {
-        const { data } = await axios.get(`${process.env.API_BASE_ENDPOINT}files/${id}/download`)
+        const { data } = await axios.get(`${process.env.API_BASE_ENDPOINT}download/${id}`)
         file = data
     } catch (error) {
         console.log(error.response.data);
