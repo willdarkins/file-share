@@ -1,5 +1,6 @@
 import express from 'express';
 import multer from 'multer';
+import nodeMailer from 'nodemailer'
 import { UploadApiResponse, v2 as cloudinary } from 'cloudinary'
 import File from '../models/file.model'
 import https from 'https'
@@ -39,7 +40,7 @@ router.post('/upload', upload.single('myFile'), async (req, res) => {
         })
 
         res.status(200).json({
-            id:file._id,
+            id: file._id,
             downloadPageLink: `${process.env.API_BASE_ENDPOINT_CLIENT}download/${file._id}`
         })
     } catch (error) {
@@ -48,12 +49,12 @@ router.post('/upload', upload.single('myFile'), async (req, res) => {
     }
 })
 
-router.get('/:id',async (req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         const id = req.params.id
         const file = await File.findById(id)
-        if(!file) {
-            return res.status(404).json({message:'That file does not exist'})
+        if (!file) {
+            return res.status(404).json({ message: 'That file does not exist' })
         }
         const { filename, format, sizeInBytes } = file
         return res.status(200).json({
@@ -63,29 +64,53 @@ router.get('/:id',async (req, res) => {
             id
         })
     } catch (error) {
-        return res.status(500).json({message:'Server Error'})
+        return res.status(500).json({ message: 'Server Error' })
     }
 })
 
-router.get('/:id/download',async (req, res) => {
+router.get('/:id/download', async (req, res) => {
     try {
         const id = req.params.id
         const file = await File.findById(id)
-        if(!file) {
-            return res.status(404).json({message:'That file does not exist'})
+        if (!file) {
+            return res.status(404).json({ message: 'That file does not exist' })
         }
         https.get(file.secure_url, (fileStream) => fileStream.pipe(res));
     } catch (error) {
-        return res.status(500).json({message:'Server Error'})
+        return res.status(500).json({ message: 'Server Error' })
     }
 })
 
 router.post('/email', async (req, res) => {
     //1. Validate Request
+    const { id, emailFrom, emailTo } = req.body
+    if (!id || !emailFrom || !emailTo)
+        return res.status(400).json({ message: 'Invalid data' })
 
     //2. Check if the file exists
+    const file = await File.findById(id)
+    if (!file) {
+        return res.status(404).json({ message: 'That file does not exist' })
+    }
 
     //3. Create transporter
+    let transporter = nodeMailer.createTransport({
+        //@ts-ignore
+        host: process.env.SENDINBLUE_SMTP_HOST,
+        port: process.env.SENDINBLUE_SMTP_PORT,
+        secure: false, // true for 465, false for other ports
+        auth: {
+            user: process.env.SENDINBLUE_SMTP_USER, // generated ethereal user
+            pass: process.env.SENDINBLUE_SMTP_PASSWORD, // generated ethereal password
+        },
+    });
+    //4. Prepare email data
+
+    const { filename, sizeInBytes } = file
+
+    //5. Send email using transporter
+
+    //6. Save the data and send the response
 
 })
 
