@@ -31,6 +31,9 @@ const EmailForm: FC<{
                 <input className='p-1 text-white bg-gray-800 border-2 focus:outline-none' type="email" placeholder='Email To...' required onChange={e => setEmailTo(e.target.value)} value={emailTo} />
                 <button type='submit' className="w-44 bg-gray-900 p-2 my-5 rounded-md focus:outline-none cursor-pointer">Send</button>
             </form>
+            {
+                message && <p className='font-medium text-red-500'>{message}</p>
+            }
         </div>
     )
 }
