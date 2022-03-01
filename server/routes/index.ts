@@ -108,7 +108,18 @@ router.post('/email', async (req, res) => {
 
     const { filename, sizeInBytes } = file
 
+    const fileSize = `${(Number(sizeInBytes)/(1024*1024)).toFixed(2)} MB`
+    const downloadPageLink = `${process.env.API_BASE_ENDPOINT_CLIENT}download/${id}`
+
     //5. Send email using transporter
+
+    const mailObject = {
+        from: emailFrom, // sender address
+        to: emailTo, // list of receivers
+        subject: "Shared File", // Subject line
+        text: `${emailFrom} has sent you a file to upload`, // plain text body
+        html: "<b>Hello world?</b>", // html body
+      });
 
     //6. Save the data and send the response
 
