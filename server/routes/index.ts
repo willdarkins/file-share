@@ -81,7 +81,12 @@ router.get('/:id/download',async (req, res) => {
 })
 
 router.post('/email', async (req, res) => {
-    
+    //1. Validate Request
+
+    //2. Check if the file exists
+
+    //3. Create transporter
+
 })
 
 export default router
