@@ -53,7 +53,7 @@ That can be found following **[THIS LINK](https://github.com/willdarkins/file-sh
 - Clicking the top right "x" of each quip will delete them from the database
 
 ## Credits
-The entire front end and styling for this project was copied from an existing repo built by <a href = https://github.com/Ileriayo>Dey-Sumiti</a> /
+The entire front end and styling for this project was copied from an existing repo built by <a href = https://github.com/Ileriayo>Dey-Sumiti</a>\
 And a big shout out to <a href = https://github.com/Ileriayo>Ileriayo Adebiyi</a> and his <a href =https://github.com/Dey-Sumit>markdown badges repository</a> which made this project all the more beautiful. Thank You.<br>
 
 ## License
