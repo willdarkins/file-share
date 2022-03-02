@@ -36,6 +36,7 @@ export default function Home() {
   const resetComponent = () => {
     setFile(null)
     setDownloadPageLink(null)
+    setUploadState('Upload')
   }
   return (
     <div className="flex flex-col items-center justify-center">
